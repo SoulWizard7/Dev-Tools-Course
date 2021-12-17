@@ -1,3 +1,4 @@
+using System;
 using DefaultNamespace.ScriptableEvents;
 using UnityEngine;
 using Variables;
@@ -17,6 +18,8 @@ namespace Asteroids
         [SerializeField] private float _maxSize;
         [SerializeField] private float _minTorque;
         [SerializeField] private float _maxTorque;
+        public float _newMaxSize = 1;
+        
 
         [Header("References:")]
         [SerializeField] private Transform _shape;
@@ -29,6 +32,7 @@ namespace Asteroids
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _instanceId = GetInstanceID();
+            _maxSize = _newMaxSize;
             
             SetDirection();
             AddForce();
@@ -40,30 +44,8 @@ namespace Asteroids
         {
             if (string.Equals(other.tag, "Laser"))
             {
-               HitByLaser();
-            }
-        }
-
-        private void HitByLaser()
-        {
-            _onAsteroidDestroyed.Raise(_instanceId);
-            Destroy(gameObject);
-        }
-
-        // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
-        public void OnHitByLaser(IntReference asteroidId)
-        {
-            if (_instanceId == asteroidId.GetValue())
-            {
-                Destroy(gameObject);
-            }
-        }
-        
-        public void OnHitByLaserInt(int asteroidId)
-        {
-            if (_instanceId == asteroidId)
-            {
-                Destroy(gameObject);
+                _onAsteroidDestroyed.Raise(_instanceId);
+               Destroy(other.gameObject);
             }
         }
         

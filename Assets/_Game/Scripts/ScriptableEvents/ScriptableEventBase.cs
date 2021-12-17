@@ -4,7 +4,8 @@ using UnityEngine;
 
 namespace DefaultNamespace.ScriptableEvents
 {
-    public abstract class ScriptableEventBase : ScriptableObject
+    [CreateAssetMenu(fileName = "new ScriptableEventNoPayload", menuName = "ScriptableObjects/ScriptableEvent", order = 0)]
+    public class ScriptableEventBase : ScriptableObject
     {
         private event Action _eventNoPayload;
         

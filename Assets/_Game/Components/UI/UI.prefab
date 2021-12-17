@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 707542950385516110}
   - component: {fileID: 3812517784591816025}
+  - component: {fileID: 1726459753}
   m_Layer: 5
   m_Name: EventListener
   m_TagString: Untagged
@@ -60,6 +61,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UI.UI, Assembly-CSharp
         m_MethodName: OnHealthChanged
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1726459753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2369577490094637426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc1ba1d73ff4fafab0d0f734f57ce27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventNoPayload: {fileID: 11400000, guid: 148afb6268e5eb34e834db2d1747cf01, type: 2}
+  _responseNoPayload:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8597208082757243919}
+        m_TargetAssemblyTypeName: UI.UI, Assembly-CSharp
+        m_MethodName: OnLaserFired
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -267,7 +296,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Asteroids Destoyed: 100'
+  m_text: 'Asteroids Destoyed: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -401,7 +430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lasers Shot: 100'
+  m_text: 'Lasers Shot: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -530,8 +559,10 @@ MonoBehaviour:
   _healthText: {fileID: 7101966235834179332}
   _onHealthChangedEvent: {fileID: 11400000, guid: 1c89cb8edd31962449ecaa94187a07fc, type: 2}
   _scoreText: {fileID: 7101966235281579915}
+  _destroyedAsteroids: 0
   _timerText: {fileID: 7101966234334493684}
   _laserText: {fileID: 7101966235362614044}
+  _lasersFired: 0
 --- !u!223 &7101966235372498891
 Canvas:
   m_ObjectHideFlags: 0
@@ -658,7 +689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Health: 100'
+  m_text: 'Health: 10'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

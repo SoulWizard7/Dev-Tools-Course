@@ -66,7 +66,22 @@ namespace Asteroids
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                Asteroid go = Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                int id = go.GetInstanceID();
+                AsteroidSet.Add(id, go);
+            }
+        }
+
+        public void SpawnSmallerAsteroids(Vector3 position)
+        {
+            var amount = Random.Range(2, 4);
+            
+            for (var i = 0; i < amount; i++)
+            {
+                Asteroid go = Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                go._newMaxSize = 0.33f;
+                int id = go.GetInstanceID();
+                AsteroidSet.Add(id, go);
             }
         }
 
