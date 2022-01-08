@@ -19,7 +19,8 @@ namespace UI
 
         [Header("Timer:")]
         [SerializeField] private TextMeshProUGUI _timerText;
-        
+        [SerializeField] private int _timer = 0;
+
         [Header("Laser:")]
         [SerializeField] private TextMeshProUGUI _laserText;
         [SerializeField] private int _lasersFired = 0;
@@ -43,18 +44,13 @@ namespace UI
         public void OnDestroyedAsteroid()
         {
             _destroyedAsteroids++;
-            SetScoreText($"Asteroids Destoyed: {_destroyedAsteroids}");
+            SetDestroyedAsteroidsText($"Asteroids Destoyed: {_destroyedAsteroids}");
         }
         
-        private void SetScoreText(string text)
+        private void SetDestroyedAsteroidsText(string text)
         {
             _scoreText.text = text;
-        }
-        
-        private void SetTimerText(string text)
-        {
-            _timerText.text = text;
-        }
+        }        
 
         public void OnLaserFired()
         {
@@ -65,6 +61,17 @@ namespace UI
         private void SetLaserText(string text)
         {
             _laserText.text = text;
+        }
+
+        public void OnTimerEvent()
+        {
+            _timer++;
+            SetTimerText($"Timer: {_timer}");
+        }
+
+        private void SetTimerText(string text)
+        {
+            _timerText.text = text;
         }
     }
 }
